@@ -1,5 +1,8 @@
 #include "argparse.h"
 
+#include <iostream>
+#include <sstream>
+
 ArgumentParser::ArgumentParser() {
   // content here
 };
@@ -36,7 +39,9 @@ const std::vector<const Argument*> ArgumentParser::getArguments() const {
 }
 
 void ArgumentParser::parse(int argc, char** argv) {
-  for (unsigned int i = 0; i < argc; ++i) {
+  prog_name_ = argv[0];
+
+  for (unsigned int i = 1; i < argc; ++i) {
     if (std::string(argv[i]).substr(0, 2) == "--") {
       if (i + 1 == argc) {
         auto err = "Argument " + std::string(argv[i]) + " given, but no value";
@@ -52,6 +57,19 @@ void ArgumentParser::parse(int argc, char** argv) {
       throw std::invalid_argument("Argument " + arg->getName() + " has no value");
     }
   }
+
+  std::cerr << print_usage() << std::endl;
+}
+
+std::string ArgumentParser::print_usage() const {
+  std::ostringstream print;
+  print << "Usage: " << prog_name_ << "\n\n";
+  print << "Available options are:\n";
+  for (const auto& arg : arguments_) {
+    print << "  " << arg->getName();
+    print << "\t" << arg->getHelpMessage() << "\n";
+  }
+  return print.str();
 }
 
 std::string ArgumentParser::retrieve(const std::string& name) const {

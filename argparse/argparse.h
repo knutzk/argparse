@@ -25,7 +25,9 @@ class ArgumentParser {
   virtual std::string retrieve(const std::string& name) const;
 
  protected:
+  std::string print_usage() const;
   std::vector<std::unique_ptr<Argument> > arguments_;
+  std::string prog_name_;
 };
 
 #endif  // ARGPARSE_H_
