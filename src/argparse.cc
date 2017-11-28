@@ -15,6 +15,15 @@ void ArgumentParser::addArgument(const std::string& name,
  }
 }
 
+const Argument* ArgumentParser::getArgument(const std::string& name) const {
+  for (const auto& arg : arguments_) {
+    if (arg->getName() == name) {
+      return arg.get();
+    }
+  }
+  throw std::invalid_argument("Argument " + name + " is not registered");
+}
+
 const std::vector<const Argument*> ArgumentParser::getArguments() const {
   std::vector<const Argument*> args;
   for (const auto& arg : arguments_) {
