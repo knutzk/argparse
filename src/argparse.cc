@@ -35,3 +35,7 @@ const std::vector<const Argument*> ArgumentParser::getArguments() const {
 void ArgumentParser::parse(int argc, char** argv) {
   // content here
 }
+
+std::string ArgumentParser::retrieve(const std::string& name) const {
+  return getArgument(name)->getValue();
+}

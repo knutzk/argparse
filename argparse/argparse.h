@@ -19,6 +19,8 @@ class ArgumentParser {
 
   void parse(int argc, char** argv);
 
+  virtual std::string retrieve(const std::string& name) const;
+
  protected:
   std::vector<std::unique_ptr<Argument> > arguments_;
 };
