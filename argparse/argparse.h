@@ -12,8 +12,7 @@ class ArgumentParser {
   ArgumentParser();
 
   void addArgument(const std::string& name,
-                   const std::string& help,
-                   const std::string& def_value = "");
+                   const std::string& help);
 
   const Argument* getArgument(const std::string& name) const;
 
