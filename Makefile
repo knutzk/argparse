@@ -5,7 +5,7 @@ TARGET := example.exe
 
 CFLAGS := -I./argparse
 LIBS := ""
-MISCFLAGS := -fdiagnostics-color=always
+MISCFLAGS := -std=c++14 -fdiagnostics-color=always
 
 SRC := $(shell find $(SRCDIR) -type f -name *.cc)
 SRC += util/example.cc
