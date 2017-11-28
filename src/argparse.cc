@@ -36,7 +36,16 @@ const std::vector<const Argument*> ArgumentParser::getArguments() const {
 }
 
 void ArgumentParser::parse(int argc, char** argv) {
-  // content here
+  for (unsigned int i = 0; i < argc; ++i) {
+    if (std::string(argv[i]).substr(0, 2) == "--") {
+      if (i + 1 == argc) {
+        auto err = "Argument " + std::string(argv[i]) + " does not have a value";
+        throw std::invalid_argument(err);
+      }
+      getArgument(argv[i])->setValue(argv[i + 1]);
+      ++i;
+    }
+  }
 }
 
 std::string ArgumentParser::retrieve(const std::string& name) const {
