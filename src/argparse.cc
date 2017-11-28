@@ -15,6 +15,14 @@ void ArgumentParser::addArgument(const std::string& name,
  }
 }
 
+const std::vector<const Argument*> ArgumentParser::getArguments() const {
+  std::vector<const Argument*> args;
+  for (const auto& arg : arguments_) {
+    args.emplace_back(arg.get());
+  }
+  return args;
+}
+
 void ArgumentParser::parse(int argc, char** argv) {
   // content here
 }

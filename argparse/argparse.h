@@ -13,6 +13,8 @@ class ArgumentParser {
 
   void addArgument(const std::string& name, const std::string& help, bool optional);
 
+  const std::vector<const Argument*> getArguments() const;
+
   void parse(int argc, char** argv);
 
  protected:
