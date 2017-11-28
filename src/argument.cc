@@ -8,7 +8,7 @@ Argument::Argument(const std::string& name,
 
 OptionalArgument::OptionalArgument(const std::string& name,
                                    const std::string& help,
-                                   bool def)
-  : Argument(name, help), default_(def) {
+                                   const std::string& def_value)
+  : Argument(name, help), def_value_(def_value) {
   // content here
 }

@@ -24,11 +24,10 @@ class OptionalArgument : public Argument {
  public:
   OptionalArgument(const std::string& name,
                    const std::string& help,
-                   bool def = false);
+                   const std::string& def_value = "");
 
  protected:
-  const bool default_;
-  bool value_;
+  const std::string def_value_;
 };
 
 #endif  // ARGUMENT_H_

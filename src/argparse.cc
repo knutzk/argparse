@@ -6,10 +6,10 @@ ArgumentParser::ArgumentParser() {
 
 void ArgumentParser::addArgument(const std::string& name,
                                  const std::string& help,
-                                 bool optional) {
+                                 const std::string& def_value) {
   // content here
-  if (optional) {
-    arguments_.emplace_back(std::make_unique<OptionalArgument>(name, help));
+  if (def_value != "") {
+    arguments_.emplace_back(std::make_unique<OptionalArgument>(name, help, def_value));
   } else {
     arguments_.emplace_back(std::make_unique<Argument>(name, help));
  }
