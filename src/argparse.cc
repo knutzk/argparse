@@ -39,11 +39,17 @@ void ArgumentParser::parse(int argc, char** argv) {
   for (unsigned int i = 0; i < argc; ++i) {
     if (std::string(argv[i]).substr(0, 2) == "--") {
       if (i + 1 == argc) {
-        auto err = "Argument " + std::string(argv[i]) + " does not have a value";
+        auto err = "Argument " + std::string(argv[i]) + " given, but no value";
         throw std::invalid_argument(err);
       }
       getArgument(argv[i])->setValue(argv[i + 1]);
       ++i;
+    }
+  }
+
+  for (const auto& arg : arguments_) {
+    if (arg->getValue() == "") {
+      throw std::invalid_argument("Argument " + arg->getName() + " has no value");
     }
   }
 }
