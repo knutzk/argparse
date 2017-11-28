@@ -16,6 +16,8 @@ class ArgumentParser {
 
   const Argument* getArgument(const std::string& name) const;
 
+  Argument* getArgument(const std::string& name);
+
   const std::vector<const Argument*> getArguments() const;
 
   void parse(int argc, char** argv);

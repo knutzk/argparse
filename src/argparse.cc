@@ -9,6 +9,15 @@ void ArgumentParser::addArgument(const std::string& name,
   arguments_.emplace_back(std::make_unique<Argument>(name, help));
 }
 
+Argument* ArgumentParser::getArgument(const std::string& name) {
+  for (auto& arg : arguments_) {
+    if (arg->getName() == name) {
+      return arg.get();
+    }
+  }
+  throw std::invalid_argument("Argument " + name + " is not registered");
+}
+
 const Argument* ArgumentParser::getArgument(const std::string& name) const {
   for (const auto& arg : arguments_) {
     if (arg->getName() == name) {
