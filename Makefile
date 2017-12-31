@@ -15,6 +15,8 @@ SRC := $(shell find $(SRCDIR) -type f -name *.cc)
 SRC += util/example.cc
 OBJ := $(SRC:.cc=.o)
 
+.PHONY: all
+
 all: $(TARGET)
 
 $(TARGET): $(LIBSO)
@@ -25,6 +27,8 @@ $(LIBSO): $(OBJ)
 
 %.o: %.cc
 	$(CC) $(CFLAGS) $(MISCFLAGS) -c -o $@ $<
+
+.PHONY: clean
 
 clean:
 	$(RM) $(OBJ)
