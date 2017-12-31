@@ -9,7 +9,6 @@ LIBSO := $(LIBDIR)/libArgparse.so
 TARGET := example.exe
 
 CFLAGS := -I$(INCDIR)
-LIBS := ""
 MISCFLAGS := -std=c++14 -fdiagnostics-color=always
 
 SRC := $(shell find $(SRCDIR) -type f -name *.cc)
