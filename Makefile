@@ -39,6 +39,7 @@ $(LIBSO): $(OBJ)
 .PHONY: clean
 
 clean:
-	$(RM) $(OBJ) $(EXOBJ)
+	$(RM) $(OBJ)
 	$(RM) $(LIBSO)
+	$(RM) $(EXOBJ)
 	$(RM) $(TARGET)
