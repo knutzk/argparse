@@ -2,7 +2,10 @@ CC := g++
 RM := rm -f
 
 INCDIR := include
+LIBDIR := lib
 SRCDIR := src
+
+LIBSO := $(LIBDIR)/libArgparse.so
 TARGET := example.exe
 
 CFLAGS := -I$(INCDIR)
@@ -15,8 +18,11 @@ OBJ := $(SRC:.cc=.o)
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
+$(TARGET): $(LIBSO)
 	$(CC) $^ -o $(TARGET) $(LIBS)
+
+$(LIBSO): $(OBJ)
+	$(CC) $^ -shared -o $(LIBSO) $(LIBS)
 
 %.o: %.cc
 	$(CC) $(CFLAGS) $(MISCFLAGS) -c -o $@ $<
