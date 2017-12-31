@@ -13,7 +13,7 @@ CFLAGS := -I$(INCDIR)
 LIBS := -L$(LIBDIR)
 MISCFLAGS := -std=c++14 -Wall -pedantic-errors -fdiagnostics-color=always
 
-SRC := $(shell find $(SRCDIR) -type f -name *.cc)
+SRC := $(wildcard $(SRCDIR)/*.cc)
 OBJ := $(SRC:.cc=.o)
 
 EXSRC := $(UTILDIR)/example.cc
