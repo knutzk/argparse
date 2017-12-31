@@ -24,10 +24,10 @@ EXOBJ := $(EXSRC:.cc=.o)
 all: $(TARGET)
 
 $(TARGET): $(EXOBJ) $(LIBSO)
-	$(CC) $(LIBS) -lArgparse -o $@ $<
+	$(CC) $(MISCFLAGS) $(LIBS) -lArgparse -o $@ $<
 
 $(LIBSO): $(OBJ)
-	$(CC) -shared -o $@ $^
+	$(CC) $(MISCFLAGS) -shared -o $@ $^
 
 %.o: %.cc
 	$(CC) $(MISCFLAGS) $(CFLAGS) -c -o $@ $<
