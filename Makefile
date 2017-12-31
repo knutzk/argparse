@@ -35,4 +35,5 @@ $(LIBSO): $(OBJ)
 
 clean:
 	$(RM) $(OBJ) $(EXOBJ)
+	$(RM) $(LIBSO)
 	$(RM) $(TARGET)
