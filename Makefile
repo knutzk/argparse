@@ -9,7 +9,7 @@ LIBSO := $(LIBDIR)/libArgparse.so
 TARGET := example.exe
 
 CFLAGS := -I$(INCDIR)
-MISCFLAGS := -std=c++14 -fdiagnostics-color=always
+MISCFLAGS := -std=c++14 -Wall -pedantic-errors -fdiagnostics-color=always
 
 SRC := $(shell find $(SRCDIR) -type f -name *.cc)
 SRC += util/example.cc
@@ -26,7 +26,7 @@ $(LIBSO): $(OBJ)
 	$(CC) $^ -shared -o $(LIBSO) $(LIBS)
 
 %.o: %.cc
-	$(CC) $(CFLAGS) $(MISCFLAGS) -c -o $@ $<
+	$(CC) $(MISCFLAGS) $(CFLAGS) -c -o $@ $<
 
 .PHONY: clean
 
