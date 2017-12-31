@@ -1,10 +1,11 @@
 CC := g++
 RM := rm -f
 
+INCDIR := include
 SRCDIR := src
 TARGET := example.exe
 
-CFLAGS := -I./argparse
+CFLAGS := -I$(INCDIR)
 LIBS := ""
 MISCFLAGS := -std=c++14 -fdiagnostics-color=always
 
