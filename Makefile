@@ -4,6 +4,7 @@ RM := rm -f
 INCDIR := include
 LIBDIR := lib
 SRCDIR := src
+UTILDIR := util
 
 LIBSO := $(LIBDIR)/libArgparse.so
 TARGET := example.exe
@@ -12,15 +13,17 @@ CFLAGS := -I$(INCDIR)
 MISCFLAGS := -std=c++14 -Wall -pedantic-errors -fdiagnostics-color=always
 
 SRC := $(shell find $(SRCDIR) -type f -name *.cc)
-SRC += util/example.cc
 OBJ := $(SRC:.cc=.o)
+
+EXSRC := $(UTILDIR)/example.cc
+EXOBJ := $(EXSRC:.cc=.o)
 
 .PHONY: all
 
 all: $(TARGET)
 
-$(TARGET): $(LIBSO)
-	$(CC) $(LIBS) -o $@ $^
+$(TARGET): $(EXOBJ) $(LIBSO)
+	$(CC) -o $@ $^
 
 $(LIBSO): $(OBJ)
 	$(CC) -shared -o $@ $^
@@ -31,5 +34,5 @@ $(LIBSO): $(OBJ)
 .PHONY: clean
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(EXOBJ)
 	$(RM) $(TARGET)
