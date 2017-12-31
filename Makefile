@@ -1,4 +1,5 @@
 CC := g++
+RM := rm -f
 
 SRCDIR := src
 TARGET := example.exe
@@ -14,12 +15,11 @@ OBJ := $(SRC:.cc=.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	@echo "   Linking..."
-	@echo "   $(CC) $^ -o $(TARGET) $(LIBS)"; $(CC) $^ -o $(TARGET) $(LIBS)
+	$(CC) $^ -o $(TARGET) $(LIBS)
 
 %.o: %.cc
-	@echo "   $(CC) $(CFLAGS) -c -o $@ $<"; $(CC) $(CFLAGS) $(MISCFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(MISCFLAGS) -c -o $@ $<
 
 clean:
-	@echo "   rm -f $(OBJ)"; rm -f $(OBJ)
-	@echo "   rm -f $(TARGET)"; rm -f $(TARGET)
+	$(RM) $(OBJ)
+	$(RM) $(TARGET)
