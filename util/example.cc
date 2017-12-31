@@ -1,10 +1,10 @@
-#include "argparse/argparse.h"
+#include "argparse/parser.h"
 
 #include <iostream>
 
 int main(int argc, char** argv) {
 
-  ArgumentParser parser;
+  Parser parser;
   parser.addArgument("--detailed", "Make everything detailed");
   parser.addArgument("--ignore", "Ignore everything");
   parser.getArgument("--ignore")->setDefaultValue("defval");

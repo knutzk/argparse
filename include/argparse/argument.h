@@ -1,5 +1,5 @@
-#ifndef ARGUMENT_H_
-#define ARGUMENT_H_
+#ifndef ARGPARSE_ARGUMENT_H_
+#define ARGPARSE_ARGUMENT_H_
 
 #include <string>
 
@@ -24,4 +24,4 @@ class Argument {
   std::string def_value_{""};
 };
 
-#endif  // ARGUMENT_H_
+#endif  // ARGPARSE_ARGUMENT_H_

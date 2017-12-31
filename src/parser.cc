@@ -1,18 +1,18 @@
-#include "argparse/argparse.h"
+#include "argparse/parser.h"
 
 #include <iostream>
 #include <sstream>
 
-ArgumentParser::ArgumentParser() {
+Parser::Parser() {
   // content here
 };
 
-void ArgumentParser::addArgument(const std::string& name,
+void Parser::addArgument(const std::string& name,
                                  const std::string& help) {
   arguments_.emplace_back(std::make_unique<Argument>(name, help));
 }
 
-Argument* ArgumentParser::getArgument(const std::string& name) {
+Argument* Parser::getArgument(const std::string& name) {
   for (auto& arg : arguments_) {
     if (arg->getName() == name) {
       return arg.get();
@@ -21,7 +21,7 @@ Argument* ArgumentParser::getArgument(const std::string& name) {
   throw std::invalid_argument("Argument " + name + " is not registered");
 }
 
-const Argument* ArgumentParser::getArgument(const std::string& name) const {
+const Argument* Parser::getArgument(const std::string& name) const {
   for (const auto& arg : arguments_) {
     if (arg->getName() == name) {
       return arg.get();
@@ -30,7 +30,7 @@ const Argument* ArgumentParser::getArgument(const std::string& name) const {
   throw std::invalid_argument("Argument " + name + " is not registered");
 }
 
-const std::vector<const Argument*> ArgumentParser::getArguments() const {
+const std::vector<const Argument*> Parser::getArguments() const {
   std::vector<const Argument*> args;
   for (const auto& arg : arguments_) {
     args.emplace_back(arg.get());
@@ -38,7 +38,7 @@ const std::vector<const Argument*> ArgumentParser::getArguments() const {
   return args;
 }
 
-void ArgumentParser::parse(int argc, char** argv) {
+void Parser::parse(int argc, char** argv) {
   prog_name_ = argv[0];
 
   for (unsigned int i = 1; i < argc; ++i) {
@@ -61,7 +61,7 @@ void ArgumentParser::parse(int argc, char** argv) {
   std::cerr << print_usage() << std::endl;
 }
 
-std::string ArgumentParser::print_usage() const {
+std::string Parser::print_usage() const {
   std::ostringstream print;
   print << "Usage: " << prog_name_ << "\n\n";
   print << "Available options are:\n";
@@ -72,6 +72,6 @@ std::string ArgumentParser::print_usage() const {
   return print.str();
 }
 
-std::string ArgumentParser::retrieve(const std::string& name) const {
+std::string Parser::retrieve(const std::string& name) const {
   return getArgument(name)->getValue();
 }

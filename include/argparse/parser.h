@@ -1,5 +1,5 @@
-#ifndef ARGPARSE_H_
-#define ARGPARSE_H_
+#ifndef ARGPARSE_PARSER_H_
+#define ARGPARSE_PARSER_H_
 
 #include "argparse/argument.h"
 
@@ -7,9 +7,9 @@
 #include <string>
 #include <vector>
 
-class ArgumentParser {
+class Parser {
  public:
-  ArgumentParser();
+  Parser();
 
   void addArgument(const std::string& name,
                    const std::string& help);
@@ -30,4 +30,4 @@ class ArgumentParser {
   std::string prog_name_;
 };
 
-#endif  // ARGPARSE_H_
+#endif  // ARGPARSE_PARSER_H_
