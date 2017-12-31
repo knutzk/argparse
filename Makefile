@@ -20,10 +20,10 @@ OBJ := $(SRC:.cc=.o)
 all: $(TARGET)
 
 $(TARGET): $(LIBSO)
-	$(CC) $^ -o $(TARGET) $(LIBS)
+	$(CC) $(LIBS) -o $@ $^
 
 $(LIBSO): $(OBJ)
-	$(CC) $^ -shared -o $(LIBSO) $(LIBS)
+	$(CC) -shared -o $@ $^
 
 %.o: %.cc
 	$(CC) $(MISCFLAGS) $(CFLAGS) -c -o $@ $<
