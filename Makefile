@@ -10,6 +10,7 @@ LIBSO := $(LIBDIR)/libArgparse.so
 TARGET := example.exe
 
 CFLAGS := -I$(INCDIR)
+LIBS := -L$(LIBDIR)
 MISCFLAGS := -std=c++14 -Wall -pedantic-errors -fdiagnostics-color=always
 
 SRC := $(shell find $(SRCDIR) -type f -name *.cc)
@@ -23,7 +24,7 @@ EXOBJ := $(EXSRC:.cc=.o)
 all: $(TARGET)
 
 $(TARGET): $(EXOBJ) $(LIBSO)
-	$(CC) -o $@ $^
+	$(CC) $(LIBS) -lArgparse -o $@ $<
 
 $(LIBSO): $(OBJ)
 	$(CC) -shared -o $@ $^
