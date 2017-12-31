@@ -19,9 +19,13 @@ OBJ := $(SRC:.cc=.o)
 EXSRC := $(UTILDIR)/example.cc
 EXOBJ := $(EXSRC:.cc=.o)
 
+.PHONY: example
+
+example: $(TARGET)
+
 .PHONY: all
 
-all: $(TARGET)
+all: $(LIBSO)
 
 $(TARGET): $(EXOBJ) $(LIBSO)
 	$(CC) $(MISCFLAGS) $(LIBS) -lArgparse -o $@ $<
