@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 
+namespace Argparse {
 class Parser {
  public:
   Parser();
@@ -29,5 +30,6 @@ class Parser {
   std::vector<std::unique_ptr<Argument> > arguments_;
   std::string prog_name_;
 };
+}  // namespace Argparse
 
 #endif  // ARGPARSE_PARSER_H_

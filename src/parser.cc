@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 
+namespace Argparse {
 Parser::Parser() {
   // content here
 };
@@ -75,3 +76,4 @@ std::string Parser::print_usage() const {
 std::string Parser::retrieve(const std::string& name) const {
   return getArgument(name)->getValue();
 }
+}  // namespace Argparse

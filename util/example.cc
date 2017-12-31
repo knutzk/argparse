@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv) {
 
-  Parser parser;
+  Argparse::Parser parser;
   parser.addArgument("--detailed", "Make everything detailed");
   parser.addArgument("--ignore", "Ignore everything");
   parser.getArgument("--ignore")->setDefaultValue("defval");

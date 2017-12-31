@@ -3,6 +3,7 @@
 
 #include <string>
 
+namespace Argparse {
 class Argument {
  public:
   Argument(const std::string& name,
@@ -23,5 +24,6 @@ class Argument {
   std::string value_{""};
   std::string def_value_{""};
 };
+}  // namespace Argparse
 
 #endif  // ARGPARSE_ARGUMENT_H_
